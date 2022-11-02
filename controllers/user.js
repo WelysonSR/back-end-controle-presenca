@@ -13,7 +13,13 @@ const login = async (req, res) => {
   return res.status(code).json({ token });
 }
 
+const getUsers = async (_req, res) => {
+  const { code, response } = await userServices.getUsers();
+  return res.status(code).json({ message: response });
+}
+
 module.exports = {
   register,
-  login
+  login,
+  getUsers
 };
