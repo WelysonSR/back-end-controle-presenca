@@ -27,6 +27,12 @@ const creat = async ({ logradouro, complemento, bairro, localidade, cep, uf, use
   }
 }
 
+const getAddresses = async () => {
+  const addresses = await Addresses.findAll();
+  return { code: 200, response: addresses };
+}
+
 module.exports = {
-  creat
+  creat,
+  getAddresses
 }

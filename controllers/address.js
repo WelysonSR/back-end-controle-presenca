@@ -7,6 +7,12 @@ const creat = async (req, res) => {
   return res.status(code).json({ message: response });
 }
 
+const getAddresses = async (_req, res) => {
+  const { code, response } = await addressServices.getAddresses();
+  return res.status(code).json({ message: response });
+}
+
 module.exports = {
-  creat
+  creat,
+  getAddresses
 };
