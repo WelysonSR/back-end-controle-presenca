@@ -1,7 +1,7 @@
 module.exports = (err, _req, res, _next) => {
   const [code, message] = err.message.split('|');
-  if (code) {
+  if (code && message) {
     return res.status(Number(code)).json({ message });
   }
-  res.status(500).json({ message: `Algo deu errado! Mensagem: ${err.message}` });
+  res.status(500).json({ message: err.message });
 }
