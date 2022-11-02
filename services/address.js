@@ -5,7 +5,7 @@ const creat = async ({ logradouro, complemento, bairro, localidade, cep, uf, use
 
   if(!regaxCep.test(cep)) throw new Error('401|Formato invalido!');
 
-  if(!logradouro || !complemento || !bairro || !localidade || !cep || !uf || !userId) {
+  if(!logradouro || !bairro || !localidade || !cep || !uf || !userId) {
     throw new Error('401|Campo obrigatório!');
   }
 
