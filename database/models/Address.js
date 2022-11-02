@@ -7,14 +7,14 @@ const Address = (sequelize, DataTypes) => {
     localidade: DataTypes.STRING,
     cep: DataTypes.STRING,
     uf: DataTypes.STRING,
-    idUser: { type: DataTypes.INTEGER, foreignKey: true },
+    userId: { type: DataTypes.INTEGER, foreignKey: true },
   }, {
     tableName: 'Addresses',
   });
 
   Address.associate = (models) => {
     Address.belongsTo(models.User,
-      { foreignKey: 'idUser', as: 'users' });
+      { foreignKey: 'userId', as: 'users' });
   };
 
   return Address;

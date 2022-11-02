@@ -9,9 +9,10 @@ const User = (sequelize, DataTypes) => {
     phone: DataTypes.STRING,
     role: DataTypes.STRING,
   });
+
   User.associate = (models) => {
-    User.hasOne(models.Address,
-      { foreignKey: 'idUser', as: 'addresses' });
+    User.hasOne(models.User,
+      { foreignKey: 'userId', as: 'addresses' });
   };
 
   return User;
