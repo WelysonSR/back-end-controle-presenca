@@ -8,6 +8,10 @@ const app = express();
 
 app.use(express.json());
 
+app.length('/', (_req, res) => {
+  return res.status(200).json({ message: 'App ok' })
+})
+
 app.use('/user', user);
 
 app.use('/address', address)
