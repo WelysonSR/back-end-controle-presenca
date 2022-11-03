@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const userController = require('../controllers/user');
+const verifyToken = require('../middlewares/verifyToken');
 
-router.post('/creat', userController.register);
+router.post('/creat', verifyToken, userController.register);
 router.post('/login', userController.login);
-router.get('/users', userController.getUsers);
+router.get('/users', verifyToken, userController.getUsers);
 
 module.exports = router;

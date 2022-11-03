@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const addressController = require('../controllers/address');
+const verifyToken = require('../middlewares/verifyToken');
 
-router.post('/', addressController.creat);
-router.get('/', addressController.getAddresses);
+router.post('/', verifyToken, addressController.creat);
+router.get('/', verifyToken, addressController.getAddresses);
 
 module.exports = router;
