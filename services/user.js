@@ -4,6 +4,7 @@ const generateToken = require('../utils/token');
 
 const regaxEmail = /\S+@\S+\.\S+/;
 const regaxPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+const regaxCpf = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
 
 const register = async ({ firstName, lestName, email, password, cpf, phone, role }) => {
   const userExist = await User.findOne({ where: { email } });
@@ -23,6 +24,10 @@ const register = async ({ firstName, lestName, email, password, cpf, phone, role
 
   if (!regaxPassword.test(password)) {
     throw new Error('401|Formato de senha incorreto!');
+  }
+
+  if (!regaxCpf.test(cpf)) {
+    throw new Error('401|Formato de cpf incorreto!');
   }
 
   const newUser = {
