@@ -59,6 +59,13 @@ const getUsers = async () => {
 }
 
 const updateUser = async ({ id, firstName, lestName, email, password, cpf, phone, role }) => {
+  const userExist = await User.findOne({ where: { id } });
+
+  if (userExist.dataValues.email !== email) {
+    const exist = await User.findOne({ where: { email } });
+    if(exist)
+      throw new Error('401|Email já cadastrado!');
+  };
   
   if(!id || !firstName || !lestName || !email || !password || !role) {
     throw new Error('401|Campo obrigatório!');
