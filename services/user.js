@@ -5,7 +5,7 @@ const generateToken = require('../utils/token');
 const regaxEmail = /\S+@\S+\.\S+/;
 const regaxPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
 
-const register = async ({ firstName, lestName, email, password, role }) => {
+const register = async ({ firstName, lestName, email, password, cpf, phone, role }) => {
   const userExist = await User.findOne({ where: { email } });
   if (userExist) throw new Error('401|Email já cadastrado!');
   
@@ -30,6 +30,8 @@ const register = async ({ firstName, lestName, email, password, role }) => {
     lestName,
     email,
     password: md5(password),
+    cpf,
+    phone,
     role
   };
 
@@ -56,8 +58,45 @@ const getUsers = async () => {
   return { code: 200, response: users };
 }
 
+const updateUser = async ({ id, firstName, lestName, email, password, cpf, phone, role }) => {
+  
+  if(!id || !firstName || !lestName || !email || !password || !role) {
+    throw new Error('401|Campo obrigatório!');
+  }
+
+  if (firstName.length < 3 || lestName.length < 4) {
+    throw new Error('401|Formato de nome incorreto!');
+  }
+
+  if (!regaxEmail.test(email)) {
+    throw new Error('401|Formato de e-mail incorreto!');
+  }
+
+  if (!regaxPassword.test(password)) {
+    throw new Error('401|Formato de senha incorreto!');
+  }
+
+  const newUser = {
+    firstName,
+    lestName,
+    email,
+    password: md5(password),
+    cpf,
+    phone,
+    role
+  };
+
+  const result = await User.update(
+    newUser,
+    { where: { id } }
+  );
+
+  if (result) return { code: 200, response: 'Usuário atualizado com sucesso!'};
+};
+
 module.exports = {
   register,
   login,
-  getUsers
+  getUsers,
+  updateUser
 }
