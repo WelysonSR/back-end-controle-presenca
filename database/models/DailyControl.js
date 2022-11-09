@@ -14,7 +14,7 @@ const DailyControl = (sequelize, DataTypes) => {
 
   DailyControl.associate = (models) => {
     DailyControl.belongsTo(models.User,
-      { foreignKey: 'userId', as: 'users' });
+      { foreignKey: { name: 'userId' }, as: 'users' });
   };
 
   return DailyControl;

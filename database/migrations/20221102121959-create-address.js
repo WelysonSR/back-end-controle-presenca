@@ -28,16 +28,16 @@ module.exports = {
       uf: {
         type: Sequelize.STRING
       },
-      idUser: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADEL',
         field: 'userId',
-        references: {
-          model: 'users',
-          key: 'id',
-        },
+        // references: {
+        //   model: 'users',
+        //   key: 'id',
+        // },
       },
       createdAt: {
         allowNull: false,
