@@ -3,6 +3,7 @@ const express = require('express');
 const error = require('../middlewares/error');
 const user = require('../routes/user');
 const address = require('../routes/address');
+const dates = require('../routes/dates');
 
 const app = express();
 
@@ -15,6 +16,8 @@ app.get('/', (_req, res) => {
 app.use('/user', user);
 
 app.use('/address', address)
+
+app.use('/dates', dates)
 
 app.use(error);
 
