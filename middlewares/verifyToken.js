@@ -6,7 +6,7 @@ const verifyToken = (req, _res, next) => {
   if (!authorization) throw new Error('401|Token não encontrado');
   const token = generateToken.decoded(authorization);
 
-  req = { ...req, token };
+  req.headers = { ...req.headers, token };
 
   next();
 }
