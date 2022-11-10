@@ -50,7 +50,7 @@ const login = async ({ email, password, checked }) => {
   if (!userExist) throw new Error('404|Email ou senha invalido!');
 
   const { dataValues } = userExist;
-  console.log(dataValues);
+
   if(md5(password) !== dataValues.password) {
     throw new Error('404|Email ou senha invalido!');
   }
@@ -63,6 +63,7 @@ const login = async ({ email, password, checked }) => {
     token: newToken,
     role: dataValues.role
   }
+
   return { code: 200, response }
 }
 

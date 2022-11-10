@@ -10,7 +10,7 @@ module.exports = {
         firstName: 'Welyson',
         lestName: 'Rosa',
         email: 'welyson12@hotmail.com',
-        password: '3b4b9197dd4ba87a047a825a545b6626',
+        password: 'a94e404783ec52352eae369b0cf3c002',
         cpf: '788.714.877-45',
         phone: '(65)2176-4666',
         role: 'boss',
