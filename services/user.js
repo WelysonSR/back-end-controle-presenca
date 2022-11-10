@@ -45,7 +45,7 @@ const register = async ({ firstName, lestName, email, password, cpf, phone, role
   if (dataValues.id) return { code: 200, response: 'Usuário criado com sucesso!'};
 };
 
-const login = async ({ email, password, hours9 }) => {
+const login = async ({ email, password, checked }) => {
   const userExist  = await User.findOne({ where: { email } });
   if (!userExist) throw new Error('404|Email ou senha invalido!');
 
@@ -54,7 +54,7 @@ const login = async ({ email, password, hours9 }) => {
     throw new Error('404|Email ou senha invalido!');
   }
 
-  const newToken = generateToken.generate(dataValues, hours9);
+  const newToken = generateToken.generate(dataValues, checked);
   return { code: 200, token: newToken }
 }
 

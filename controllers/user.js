@@ -8,8 +8,8 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-  const { email, password, hours9 } = req.body;
-  const { code, token } = await userServices.login({ email, password, hours9 });
+  const { email, password, checked } = req.body;
+  const { code, token } = await userServices.login({ email, password, checked });
   return res.status(code).json({ token });
 }
 
