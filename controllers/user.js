@@ -9,8 +9,8 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password, checked } = req.body;
-  const { code, token } = await userServices.login({ email, password, checked });
-  return res.status(code).json({ token });
+  const { code, response } = await userServices.login({ email, password, checked });
+  return res.status(code).json(response);
 }
 
 const getUsers = async (_req, res) => {

@@ -50,12 +50,20 @@ const login = async ({ email, password, checked }) => {
   if (!userExist) throw new Error('404|Email ou senha invalido!');
 
   const { dataValues } = userExist;
+  console.log(dataValues);
   if(md5(password) !== dataValues.password) {
     throw new Error('404|Email ou senha invalido!');
   }
 
   const newToken = generateToken.generate(dataValues, checked);
-  return { code: 200, token: newToken }
+  const response = {
+    id: dataValues.id,
+    firstName: dataValues.firstName,
+    lestName: dataValues.lestName,
+    token: newToken,
+    role: dataValues.role
+  }
+  return { code: 200, response }
 }
 
 const getUsers = async () => {
