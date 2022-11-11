@@ -1,4 +1,5 @@
 require('express-async-errors');
+const cors = require('cors')
 const express = require('express');
 const error = require('../middlewares/error');
 const user = require('../routes/user');
@@ -7,6 +8,7 @@ const dates = require('../routes/dates');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (_req, res) => {
