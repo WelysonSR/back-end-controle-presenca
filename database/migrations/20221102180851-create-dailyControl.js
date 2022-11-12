@@ -23,7 +23,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       transporte: {
-        type: Sequelize.STRING
+        type: Sequelize.FLOAT
       },
       bancoHora: {
         type: Sequelize.STRING

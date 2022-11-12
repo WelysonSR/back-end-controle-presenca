@@ -5,7 +5,7 @@ const DailyControl = (sequelize, DataTypes) => {
     data: DataTypes.STRING,
     horaEntrada: DataTypes.STRING,
     horaSaida: DataTypes.STRING,
-    transporte: DataTypes.STRING,
+    transporte: DataTypes.FLOAT,
     bancoHora: DataTypes.STRING,
     userId: { type: DataTypes.INTEGER, foreignKey: true },
   },{
