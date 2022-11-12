@@ -117,6 +117,7 @@ const updateUser = async ({ id, firstName, lestName, email, password, cpf, phone
 
 const getUserId = async ({id}) => {
   const user = await User.findOne({ where: { id },
+    attributes: { exclude: ['password', 'createdAt', 'updatedAt']},
     include:[
       {
         model: DailyControl, as: 'dailyControl',
