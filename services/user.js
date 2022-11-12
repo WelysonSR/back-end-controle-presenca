@@ -1,4 +1,4 @@
-const { User } = require('../database/models');
+const { User, DailyControl } = require('../database/models');
 const md5 = require('md5');
 const generateToken = require('../utils/token');
 
@@ -116,7 +116,13 @@ const updateUser = async ({ id, firstName, lestName, email, password, cpf, phone
 };
 
 const getUserId = async ({id}) => {
-  const user = await User.findOne({ where: { id }});
+  const user = await User.findOne({ where: { id },
+    include:[
+      {
+        model: DailyControl, as: 'dailyControl',
+        where: { userId: id }
+      }
+  ]});
   return { code: 200, response:user.dataValues}
 }
 
