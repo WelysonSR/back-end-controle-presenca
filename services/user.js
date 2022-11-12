@@ -115,9 +115,15 @@ const updateUser = async ({ id, firstName, lestName, email, password, cpf, phone
   if (result) return { code: 200, response: 'Usuário atualizado com sucesso!'};
 };
 
+const getUserId = async ({id}) => {
+  const user = await User.findOne({ where: { id } });
+  return { code: 200, response:user.dataValues}
+}
+
 module.exports = {
   register,
   login,
   getUsers,
-  updateUser
+  updateUser,
+  getUserId
 }

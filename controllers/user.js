@@ -25,9 +25,16 @@ const updateUser = async (req, res) => {
   return res.status(code).json({ message: response });
 }
 
+const getUserId = async (req, res) => {
+  const { id } = req.params;
+  const { code, response } = await userServices.getUserId({id});
+  return res.status(code).json({ message: response });
+} 
+
 module.exports = {
   register,
   login,
   getUsers,
-  updateUser
+  updateUser,
+  getUserId
 };
