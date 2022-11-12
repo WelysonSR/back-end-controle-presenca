@@ -121,7 +121,8 @@ const getUserId = async ({id}) => {
     include:[
       {
         model: DailyControl, as: 'dailyControl',
-        where: { userId: id }
+        where: { userId: id },
+        attributes: { exclude: ['id', 'createdAt', 'updatedAt']},
       }
   ]});
   return { code: 200, response:user.dataValues}
