@@ -116,7 +116,7 @@ const updateUser = async ({ id, firstName, lestName, email, password, cpf, phone
 };
 
 const getUserId = async ({id}) => {
-  const user = await User.findOne({ where: { id } });
+  const user = await User.findOne({ where: { id }});
   return { code: 200, response:user.dataValues}
 }
 
