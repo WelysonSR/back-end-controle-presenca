@@ -104,7 +104,10 @@ const somaBh = (mesAn, mesAt) => {
 }
 
 const calculoTraspoetMes = (info) => {
-  return typeof info[0].transporte
+  const total = info.reduce((acc, {transporte}) => {
+    return acc + transporte;
+  }, 0);
+  return total.toFixed(2);
 }
 
 const transporte = [

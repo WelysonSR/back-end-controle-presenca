@@ -42,7 +42,7 @@ const register = async ({ firstName, lestName, email, password, cpf, phone, role
 
   const { dataValues } = await User.create(newUser);
 
-  if (dataValues.id) return { code: 200, response: 'Usuário criado com sucesso!'};
+  if (dataValues.id) return {userId: dataValues.id, code: 200, response: 'Usuário criado com sucesso!'};
 };
 
 const login = async ({ email, password, checked }) => {
