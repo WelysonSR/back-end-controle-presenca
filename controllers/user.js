@@ -2,9 +2,9 @@ const userServices = require('../services/user')
 
 const register = async (req, res) => {
   const { firstName, lestName, email, password, cpf, phone, role } = req.body;
-  const { code, response } = await userServices
+  const { userId, code, response } = await userServices
     .register({ firstName, lestName, email, password, cpf, phone, role });
-  return res.status(code).json({ message: response });
+  return res.status(code).json({ userId, message: response });
 }
 
 const login = async (req, res) => {
@@ -27,8 +27,8 @@ const updateUser = async (req, res) => {
 
 const getUserId = async (req, res) => {
   const { id } = req.params;
-  const {userId, code, response } = await userServices.getUserId({id});
-  return res.status(code).json({response, userId});
+  const {code, response } = await userServices.getUserId({id});
+  return res.status(code).json({response});
 } 
 
 module.exports = {
