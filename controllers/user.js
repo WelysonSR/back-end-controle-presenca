@@ -28,7 +28,7 @@ const updateUser = async (req, res) => {
 const getUserId = async (req, res) => {
   const { id } = req.params;
   const {code, response } = await userServices.getUserId({id});
-  return res.status(code).json({response});
+  return res.status(code).json(response);
 } 
 
 module.exports = {
